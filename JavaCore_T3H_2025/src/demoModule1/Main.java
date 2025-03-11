@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
+    P3Ex2();
     }
     private static void P1Ex1(){
         Scanner sc = new Scanner(System.in);
@@ -84,5 +84,45 @@ public class Main {
         sb.reverse();
 
         System.out.println("Chuoi sau khi dao nguoc: " + sb.toString());
+    }
+
+    private static void P3Ex2() {
+        System.out.println("Nhap vao chuoi de kiem tra chuoi doi xung hay khong: ");
+        Scanner sc = new Scanner(System.in);
+        String chuoi = sc.nextLine();
+        StringBuilder chuoiArray =  new StringBuilder(chuoi);
+        boolean isValid = false;
+        boolean isEvenNumber = false;
+        //Check xem so luong tu nhap vao co phai chan hay khong
+        if (chuoiArray.length() % 2 == 0) {
+            isEvenNumber = true;
+        }
+
+        if (isEvenNumber) {
+            //revert lai chuoi va so sanh voi chuoi goc
+            String chuoiReverse = chuoiArray.reverse().toString();
+            if (chuoi.equalsIgnoreCase(chuoiReverse)) {
+                isValid = true;
+            }
+        } else {
+            StringBuilder chuoiA = new StringBuilder(chuoiArray.toString().toLowerCase());
+
+            for (int i = 0; i < chuoiArray.length() / 2; i++) {
+                if (chuoiA.charAt(i) != chuoiA.charAt(chuoiArray.length() - i - 1)) {
+                    isValid = false;
+                    break;  // Nếu không đối xứng thì thoát khỏi vòng lặp
+                }
+            }
+        }
+
+        if (isValid) {
+            System.out.println("Chuoi doi xung");
+        } else {
+            System.out.println("Chuoi bat doi xung");
+        }
+    }
+
+    private static void P3Ex3() {
+        
     }
 }
