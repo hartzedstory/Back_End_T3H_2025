@@ -123,6 +123,33 @@ public class Main {
     }
 
     private static void P3Ex3() {
-        
+        System.out.println("Nhap vao so luong phan tu mong muon");
+        Scanner sc = new Scanner(System.in);
+        int input  = sc.nextInt();
+        int[] inputArray = new int[input];
+        for (int i = 0; i < inputArray.length; i++) {
+            System.out.println(String.format("Vui long nhap phan tu thu: %d", i));
+            int temp = sc.nextInt();
+            inputArray[i] = temp;
+        }
+        // Tinh tong cac so trong mang
+        int result = 0;
+        for (int i = 0; i < inputArray.length; i++) {
+            result += inputArray[i];
+        }
+        System.out.println("Tong: " + result);
+
+        int max = inputArray[0];
+        int min = inputArray[0];
+        for (int i = 0; i < inputArray.length; i++) {
+            if (inputArray[i] > max) {
+                max = inputArray[i];
+            }
+            if (inputArray[i] < min) {
+                min = inputArray[i];
+            }
+        }
+        System.out.println("Max: " + max);
+        System.out.println("Min: " + min);
     }
 }
