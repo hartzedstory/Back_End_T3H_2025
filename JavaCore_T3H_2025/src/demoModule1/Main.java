@@ -1,5 +1,6 @@
 package demoModule1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -149,7 +150,88 @@ public class Main {
                 min = inputArray[i];
             }
         }
+
         System.out.println("Max: " + max);
         System.out.println("Min: " + min);
+
+        // Them 1 phan tu vao trong mang theo index mong muon
+        System.out.println("Nhap index can them gia tri");
+        int index = sc.nextInt();
+        System.out.println("Nhap index can them gia tri");
+        int needAddValue = sc.nextInt();
+        AddElementAt(inputArray,needAddValue,index);
+
+        // Nhap vao 1 phan tu va xoa cac phan tu do trong mang
+
+        System.out.println("Nhap so can Xoa");
+        int needDeletedValue = sc.nextInt();
+        DeleteElementWith(needDeletedValue,inputArray);
+
+        //Tim phan tu lon thu 3 trong mang
+        SoLont3(inputArray);
+    }
+
+    private static void SoLont3(int[] mangSoNguyen) {
+        for (int i = 0; i < mangSoNguyen.length; i++) {
+            for (int j = i; j < mangSoNguyen.length; j++) {
+                if (mangSoNguyen[i] < mangSoNguyen[j]) {
+                    int term = mangSoNguyen[i];
+                    mangSoNguyen[i] = mangSoNguyen[j];
+                    mangSoNguyen[j] = term;
+                }
+            }
+        }
+        System.out.println("Phan tu lon thu 3: " +  mangSoNguyen[2]);
+    }
+
+    private static void AddElementAt(
+                                     int[] mangSoNguyen,
+                                     int numberNeedToAdd,
+                                     int index) {
+        int soLuongPhanTuBanDau = mangSoNguyen.length;
+        if (soLuongPhanTuBanDau == mangSoNguyen.length) {
+            System.out.println("Can not add!!!");
+            return;
+        }
+        // Them 100% o nho cua mang ban dau
+        soLuongPhanTuBanDau += soLuongPhanTuBanDau;
+
+        //Duyet vi tri can them
+        for (int i = 0; i < soLuongPhanTuBanDau; i++) {
+            if (i != index){
+                continue;
+            }
+            for (int j = soLuongPhanTuBanDau - 1; j > i; j--) {
+                mangSoNguyen[j] = mangSoNguyen[j - 1];
+            }
+            mangSoNguyen[index] = numberNeedToAdd;
+            break;
+        }
+
+        //In ra mang sai cuoi cung
+        System.out.println("Mang sau khi them: " +  mangSoNguyen);
+    }
+
+    private static void DeleteElementWith(int soCanXoa, int[] mangSoNguyen) {
+        int deletedNum = 0;
+        for (int i = 0; i < mangSoNguyen.length; i++) {
+            int temp = mangSoNguyen[i];
+
+            if (soCanXoa == temp) {
+                // nếu tìm thấy => duyệt từ index i cho đến cuối mảng
+                for (int j = i; j < mangSoNguyen.length; j++) {
+                    if (j == mangSoNguyen.length - 1){
+                        continue;
+                    }
+                    mangSoNguyen[j] = mangSoNguyen[j + 1];
+                }
+                // lùi lại cả index i phục vụ cho trường hợp 2 số cần xóa cạnh nhau
+                i--;
+                // lưu lại số lượng số đã xóa
+                deletedNum++;
+            }
+        }
+
+        System.out.println("Mang sau khi xoa: " +  mangSoNguyen);
     }
 }
