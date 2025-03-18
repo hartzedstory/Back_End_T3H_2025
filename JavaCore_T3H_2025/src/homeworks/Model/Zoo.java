@@ -25,6 +25,9 @@ public class Zoo {
 
     private void increaseSizeListIfNeeded(Animal[] animalList){
         Animal[] newAnimalList = new Animal[animalList.length + 1];
+        for (int i = 0; i < animalList.length; i++) {
+            newAnimalList[i] = animalList[i];
+        }
         this.animalList = newAnimalList;
     }
 }

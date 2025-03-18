@@ -16,7 +16,7 @@ public abstract class Animal {
 
         System.out.println("Nhap tuoi:");
         this.setAge(sc.nextInt());
-
+        sc.nextLine();
         System.out.println("Nhap giong loai:");
         this.setSpecies(sc.nextLine());
 
