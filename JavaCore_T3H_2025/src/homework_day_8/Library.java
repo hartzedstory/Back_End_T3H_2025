@@ -50,11 +50,14 @@ public class Library implements ILibrary{
                         BusinessBook book = new BusinessBook();
                         book.inputInfo();
                         addBook(book);
+                        break;
                     case 2:
                         ScienceBook scibook = new ScienceBook();
                         scibook.inputInfo();
                         addBook(scibook);
+                        break;
                 }
+                break;
             case 2:
                 System.out.println("Thong tin sach moi");
                 System.out.println("1 - Sach kinh doanh");
@@ -100,6 +103,7 @@ public class Library implements ILibrary{
     @Override
     public void addBook(Book book) {
         this.bookList.add(book);
+        System.out.println("THEM SACH THANH CONG");
     }
 
     @Override
