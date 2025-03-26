@@ -1,42 +1,55 @@
 
-//Exception - try catch
-import homework_day_9.Exception.CourseAlreadyRegisteredException;
-import homework_day_9.Manager.CourseManager;
-import homework_day_9.Student;
+// Collection
 
-import java.util.Scanner;
+import com.sun.source.tree.CaseTree;
+
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        CourseManager manager = new CourseManager();
-        Student student1 = new Student();
-        Student student2 = new Student();
 
-        student1.setName("Sinh vien A");
-        student1.setId(12345);
+        // 1 Danh sách ca số nguyên
+        List<Integer> arrayNumber = new ArrayList<Integer>();
+        // them phan tu vao collection
+        arrayNumber.add(1);
+        arrayNumber.add(2);
+        arrayNumber.add(3);
+        arrayNumber.add(4);
 
-        student2.setName("Sinh vien B");
-        student2.setId(23456);
+        //Lay phan tu tu collection thong qua index
+        System.out.println(arrayNumber.get(0));
+        System.out.println(arrayNumber.get(1));
+        System.out.println(arrayNumber.get(2));
 
-        manager.addStudent(student1);
-        manager.addStudent(student2);
 
-        //Try catch tim loi
-        try {
-            student1.registerCourse("Math");
-        } catch (CourseAlreadyRegisteredException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            System.out.println("XU LY XONG");
+        // Khoi tao mot set cac phan tu String
+        Set<String> set = new HashSet<String>();
+        //Them moi cac phan tu vao set
+        set.add("a");
+        set.add("b");
+        set.add("c");
+        set.add("d");
+
+        //Bien set thanh Iterator de duyet cac phan tu
+        Iterator<String> setIterator = set.iterator();
+        //Lay mot phan tu cua set
+        setIterator.next();
+        while (setIterator.hasNext()) { // Neu set van con phan tu
+            // --> Lay ra phan tu do tu set
+            System.out.println(setIterator.next());
         }
 
-        System.out.println("--------");
-        try {
-            student1.registerCourse("Math");
-        } catch (CourseAlreadyRegisteredException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            System.out.println("XU LY XONG");
-        }
+
+        //Khoi tao queue voi linkedlist
+        Queue<Integer> queue = new LinkedList<>();
+        // Them phan tu vao queue
+        queue.add(1);
+        queue.add(2);
+        queue.add(3);
+
+        //Lay ra phan tu
+        queue.stream().forEach((data) -> {
+            System.out.println(data);
+        });
     }
 }
