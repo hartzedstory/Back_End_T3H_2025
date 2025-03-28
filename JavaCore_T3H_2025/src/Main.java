@@ -2,54 +2,72 @@
 // Collection
 
 import com.sun.source.tree.CaseTree;
+import homework_day_10.EmployeeManager;
+import homework_day_10.Exception.EmployeeException;
 
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-
-        // 1 Danh sách ca số nguyên
-        List<Integer> arrayNumber = new ArrayList<Integer>();
-        // them phan tu vao collection
-        arrayNumber.add(1);
-        arrayNumber.add(2);
-        arrayNumber.add(3);
-        arrayNumber.add(4);
-
-        //Lay phan tu tu collection thong qua index
-        System.out.println(arrayNumber.get(0));
-        System.out.println(arrayNumber.get(1));
-        System.out.println(arrayNumber.get(2));
-
-
-        // Khoi tao mot set cac phan tu String
-        Set<String> set = new HashSet<String>();
-        //Them moi cac phan tu vao set
-        set.add("a");
-        set.add("b");
-        set.add("c");
-        set.add("d");
-
-        //Bien set thanh Iterator de duyet cac phan tu
-        Iterator<String> setIterator = set.iterator();
-        //Lay mot phan tu cua set
-        setIterator.next();
-        while (setIterator.hasNext()) { // Neu set van con phan tu
-            // --> Lay ra phan tu do tu set
-            System.out.println(setIterator.next());
+        EmployeeManager manager = new EmployeeManager();
+        try {
+            solution(manager);
+        } catch (EmployeeException e) {
+            System.out.println(e.getMessage());
         }
 
 
-        //Khoi tao queue voi linkedlist
-        Queue<Integer> queue = new LinkedList<>();
-        // Them phan tu vao queue
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
+    }
+    private static void solution(EmployeeManager manager) throws EmployeeException {
+        System.out.println("----------------------------------");
+        System.out.println("1. Them nhan vien");
+        System.out.println("2. Hien thi danh sach");
+        System.out.println("3. Tinh tong luong");
+        System.out.println("4. Tim nhan vien luong cao nhat");
+        System.out.println("5. Tim nhan vien theo ma");
+        System.out.println("6. Sap xep theo ten");
+        System.out.println("7. Sap xep theo luong");
+        System.out.println("8. Thoat");
+        System.out.println("----------------------------------");
+        System.out.println("Chon chuc nang");
+        Scanner scanner = new Scanner(System.in);
+        int choice = scanner.nextInt();
+        do
 
-        //Lay ra phan tu
-        queue.stream().forEach((data) -> {
-            System.out.println(data);
-        });
+        {
+
+            if (choice < 1 || choice > 8) {
+                System.out.println("Vui long nhap trong khoan 1 toi 8");
+            }
+            if (choice == 8) {
+                break;
+            }
+        } while(choice< 1||choice > 8);
+        switch(choice)
+        {
+            case 1:
+                manager.addEmployee();
+                break;
+            case 2:
+                manager.showEmployeeList();
+                break;
+            case 3:
+               manager.calculateAllSalary();
+                break;
+            case 4:
+                manager.searchHighestPaid();
+                break;
+            case 5:
+                System.out.println("Nhap ID can tim: ");
+                Scanner idScanner = new Scanner(System.in);
+                manager.searchById(idScanner.nextLine());
+                break;
+            case 6:
+                manager.sortEmployeeListAlphabetically();
+                break;
+            case 7:
+                manager.sortEmployeeOPaidDescending();
+                break;
+        }
     }
 }

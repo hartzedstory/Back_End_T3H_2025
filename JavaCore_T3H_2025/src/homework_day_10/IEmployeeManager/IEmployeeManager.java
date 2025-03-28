@@ -1,5 +1,6 @@
 package homework_day_10.IEmployeeManager;
 
+import homework_day_10.Exception.EmployeeException;
 import homework_day_10.Model.Engineer;
 import homework_day_10.Model.Manager;
 import homework_day_10.Model.Officer;
@@ -30,10 +31,10 @@ public interface IEmployeeManager {
         manager.setMultiplier((int) 1.5);
 
     };
-    void addEmployee();
+    void addEmployee() throws EmployeeException;
     void showEmployeeList();
     void calculateAllSalary();
-    void searchHighestPaid(String id);
+    void searchHighestPaid();
     void searchById(String id);
     void sortEmployeeListAlphabetically();
     void sortEmployeeOPaidDescending();
