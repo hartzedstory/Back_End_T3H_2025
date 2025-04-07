@@ -14,6 +14,10 @@ public class Manager extends Employee implements Workable {
         System.out.println("Depoartment Name: " + this.getDepartment());
     }
 
+    public void displayInfor(String format) {
+        System.out.println(format);
+    }
+
     @Override
     public void work() {
         System.out.println("Work as an Managing department: " + this.getDepartment());
