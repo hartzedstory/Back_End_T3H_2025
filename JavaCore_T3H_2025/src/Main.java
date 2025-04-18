@@ -80,7 +80,7 @@ public class Main {
             }
             ResultSet resultSetDetail = prepareStatement.executeQuery();
             while (resultSetDetail.next()) {
-                sout
+
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
